@@ -1,0 +1,50 @@
+
+
+.movie-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+
+.movie-img {
+    width: 300px;
+    margin: 30px;
+    border-radius: 50px;
+    
+}
+
+.movie-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-sinopse {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 120%; 
+    font-size: 120%;
+    max-width: 30%;
+    margin-left: 15px;
+
+}
+
+.movie-button {
+    text-align: center;
+    background: #A9A9A9;
+    border: none;
+    cursor: pointer;
+    border-radius: 1rem;
+    color: white;
+    padding: 0.8rem 2rem;
+    margin-top: 1rem;
+    font-size: 100%;
+    transition: all 0.3s;
+    margin-right: 15px;
+}
+
+.movie-button:hover {
+    background: #778899;
+}

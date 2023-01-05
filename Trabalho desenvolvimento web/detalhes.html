@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="detalhes.css">
+    <link rel="stylesheet" href="global.css">
+    <link href="formulario.html">
+
+    <title>Locadora</title>
+</head>
+<body id="body">
+
+<script> 
+
+const key = "36a231b5bcec996e9ef26d556a119a4c";
+const imageURL = "https://image.tmdb.org/t/p/original";
+const baseURL = "https://api.themoviedb.org/3/";
+        
+    function retornarHTML () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('id')
+        
+        fetch(`${baseURL}movie/${myParam}?api_key=${key}&language=pt-br&page=1`)
+        .then(res => res.json())
+        .then((data)=> { 
+            console.log(data)
+
+            const body = document.getElementById("body")
+            body.src = imageURL + data.poster_path
+            
+            const movieList = document.getElementById("movie-overview");
+            const movie = document.createElement("div");
+            movie.className = "movie-list";
+            movie.classList.add("movieList");
+            movieList.appendChild(movie);
+
+            const title = document.createElement("h2");
+            title.className = "movie-title";
+            title.innerText = `${data.title}`;
+            movie.appendChild(title);
+
+            const movie_posters = document.createElement("div");
+            movie_posters.className = "movie-poster";
+            movieList.appendChild(movie_posters);
+
+            const poster = document.createElement("img");
+            poster.className = "movie-img";
+            poster.src = imageURL + data.poster_path;
+            movie_posters.appendChild(poster);
+
+            const sinopse = document.createElement("span")
+            sinopse.className = "movie-sinopse"
+            sinopse.innerText = `SINOPSE: ${data.overview}`;
+            movie_posters.appendChild(sinopse);
+            
+            
+            const button = document.createElement("a")
+            button.className = "movie-button"
+            button.innerText = "Página Inicial"
+            button.href = "index.html"
+            sinopse.appendChild(button);
+
+            const newButton = document.createElement("a")
+            newButton.className = "movie-button"
+            newButton.innerText = "Comprar"
+            newButton.href = "formulario.html"
+            sinopse.appendChild(newButton);
+
+
+        })
+}
+retornarHTML()
+
+
+
+</script>
+
+    <main>
+        <div id="movie-overview"></div>
+        
+    </main>
+
+</body>
+</html>
